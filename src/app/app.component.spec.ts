@@ -1,5 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { By } from '@angular/platform-browser';
+
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -16,16 +18,44 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'project'`, () => {
+
+
+  it(`should show no cookie consent request when it was already accepted'`, () => {
+    //Arrange
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('project');
+
+
+    //action
+    app.setCookieConsent();//setting the consent
+
+    //Assert    
+    fixture.detectChanges();
+    expect(fixture.debugElement.query(By.css('.cookie'))).toBeNull();
   });
 
-  it('should render title', () => {
+
+  it(`should show cookie consent request when it was not accepted'`, () => {
+    //Arrange
     const fixture = TestBed.createComponent(AppComponent);
+
+    //Assert    
     fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('project app is running!');
+    expect(fixture.debugElement.query(By.css('.cookie'))).toBeTruthy();
   });
+
+
+  // it(`should show cookie consent request'`, () => {
+  //   //   //Arrange
+  //   const fixture = TestBed.createComponent(AppComponent);
+  //   const app = fixture.componentInstance;
+
+  //   //   //action
+  //   app.setCookieConsent();
+
+  //   //   //Assert
+  //   expect(fixture.debugElement.query(By.css('.cookie'))).not.toBeNull();
+
+  // });
+
 });

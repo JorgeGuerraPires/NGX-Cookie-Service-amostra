@@ -8,12 +8,19 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class AppComponent {
   title = 'project';
-  cookieValue;
+  cookieValue = '';
 
   constructor(private cookieService: CookieService
   ) {
-    this.cookieService.set('Test', 'Hello World, this is Jorge Guerra Pires talking to you');
-    this.cookieValue = this.cookieService.get('Test');
+
+    //this.setCookieConsent();
+
+  }
+
+  setCookieConsent() {
+    this.cookieService.set('Cookie Consent', 'true');
+    this.cookieValue = this.cookieService.get('Cookie Consent');
+
   }
 
 
