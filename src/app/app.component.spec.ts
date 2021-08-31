@@ -44,18 +44,4 @@ describe('AppComponent', () => {
     expect(fixture.debugElement.query(By.css('.cookie'))).toBeTruthy();
   });
 
-
-  // it(`should show cookie consent request'`, () => {
-  //   //   //Arrange
-  //   const fixture = TestBed.createComponent(AppComponent);
-  //   const app = fixture.componentInstance;
-
-  //   //   //action
-  //   app.setCookieConsent();
-
-  //   //   //Assert
-  //   expect(fixture.debugElement.query(By.css('.cookie'))).not.toBeNull();
-
-  // });
-
 });
